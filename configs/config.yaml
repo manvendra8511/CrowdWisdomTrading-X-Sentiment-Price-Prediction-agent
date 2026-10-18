@@ -1,0 +1,58 @@
+# Application Configuration
+app:
+  name: "CWT X Sentiment Agent"
+  version: "1.0.0"
+  description: "Sentiment analysis agent for CrowdWisdom Trading"
+  environment: "development"
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+  cors_origins:
+    - "*"
+  workers: 1
+
+# Sentiment Analysis Configuration
+sentiment:
+  language: "en"
+  confidence_threshold: 0.6
+  use_ensemble: true
+  rule_weight: 0.4
+  ml_weight: 0.6
+  max_text_length: 10000
+  cache_predictions: true
+
+# Rule-based Analyzer Configuration
+rule_based:
+  case_sensitive: false
+  intensifier_weight: 0.25
+  diminisher_weight: 0.25
+  negation_weight: 0.5
+  lexicon_path: "./data/lexicons"
+
+# ML Model Configuration
+ml_model:
+  model_path: "./data/models"
+  model_name: "sentiment_model"
+  vectorizer_name: "tfidf_vectorizer"
+  max_features: 10000
+  ngram_range: [1, 2]
+  cache_predictions: true
+  cache_max_size: 1000
+
+# Storage Configuration
+storage:
+  type: "sqlite"
+  path: "./data/sentiment_agent.db"
+  echo: false
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "./logs/app.log"
+  max_size_mb: 10
+  backup_count: 5
+  console_output: true
